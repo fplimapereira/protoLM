@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">ProtoLM</string>
+    <string name="label_title">Labirinto da Morte</string>
+    <string name="label_bt_startgame">Nova Partida</string>
+
+
+    <string name="character_value_format">%d</string>
+    <string name="personagem">Personagem</string>
+    <string name="char_label_descricao">Determine os atributos de Destreza, Vida, Convicção e escolha Talentos. Você
+        receberá 10 pontos para distribuir entre eles.
+    </string>
+    <string name="default_att_value">7</string>
+    <string name="label_dexterity_dsc">Destreza: representa sua força e habilidade física. Sua destreza inicial é 7 e
+        cada ponto adicional custa 2 créditos.
+    </string>
+    <string name="life_val">20</string>
+    <string name="label_life_desc">Vida: representa o seu vigor e saúde. Sua vida inicial é 20. Dois pontos extras
+        custam 1 crédito
+    </string>
+    <string name="label_belief_desc">Convicção: representa a sua confiança e força de vontade. Sua convição inicial é
+        7 e cada ponto extra custa 1 crédito</string>
+    <string name="label_talentos">Talentos</string>
+    <string name="label_talents_desc">Representam habilidades especiais. A cada aventura você poderá usar uma vez cada
+        talento. Cada talento custa 2 créditos
+    </string>
+    <string name="label_critical_strike">Ataque Poderoso</string>
+    <string name="label_critical_strike_desc">Reduz automaticamente 5 pontos de vida de um inimigo</string>
+    <string name="label_fast_regen">Regeneração Acelerada</string>
+    <string name="label_fast_regen_desc">Restaura 5 pontos de sua vida.</string>
+    <string name="button_precise_evaluation_label">Avaliação Precisa</string>
+    <string name="label_precise_evaluation_desc">Obtém sucesso imediato em um teste de destreza ou convicção</string>
+    <string name="label_credits">10</string>
+    <string name="label_btn_continue">continue</string>
+</resources>
