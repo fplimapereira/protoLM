@@ -23,18 +23,11 @@ class CharacterViewModel: ViewModel() {
     val belief: LiveData<Int>
         get() = _belief
 
-    private val _criticalAttack = MutableLiveData<Boolean>()
-    val criticalAttack: LiveData<Boolean>
-        get() = _criticalAttack
+    val criticalAttack = MutableLiveData<Boolean>()
 
-    private val _fastRegen = MutableLiveData<Boolean>()
-    val fastRegen: LiveData<Boolean>
-        get() = _fastRegen
+    val fastRegen = MutableLiveData<Boolean>()
 
-    private val _preciseEvaluation = MutableLiveData<Boolean>()
-    val preciseEvaluation: LiveData<Boolean>
-        get() = _preciseEvaluation
-
+    val preciseEvaluation = MutableLiveData<Boolean>()
 
 
 
@@ -59,9 +52,9 @@ class CharacterViewModel: ViewModel() {
         _dexterity.value = 7
         _life.value = 20
         _belief.value = 7
-        _criticalAttack.value = false
-        _preciseEvaluation.value = false
-        _fastRegen.value = false
+        criticalAttack.value = false
+        preciseEvaluation.value = false
+        fastRegen.value = false
     }
 
     //métodos para os botões
@@ -78,7 +71,7 @@ class CharacterViewModel: ViewModel() {
     }
 
     //remove destreza
-    fun removeDexterity(){
+    fun removeDex(){
         if(verifyMinTwo()){
             _minimumValue.value = true
         }
@@ -95,7 +88,18 @@ class CharacterViewModel: ViewModel() {
         }
         else{
             _credits.value = (_credits.value)?.minus(1)
-            _dexterity.value = (_life.value)?.plus(2)
+            _life.value = (_life.value)?.plus(2)
+        }
+    }
+
+    //remove vida
+    fun removeLife(){
+        if(verifyMinLife()){
+            _minimumValue.value = true
+        }
+        else{
+            _credits.value = (_credits.value)?.plus(1)
+            _life.value = (_life.value)?.minus(2)
         }
     }
 
@@ -106,18 +110,71 @@ class CharacterViewModel: ViewModel() {
         }
         else{
             _credits.value = (_credits.value)?.minus(1)
-            _dexterity.value = (_belief.value)?.plus(1)
+            _belief.value = (_belief.value)?.plus(1)
+        }
+    }
+
+    //remove convicção
+    fun removeBelief(){
+        if(verifyMinBelief()){
+            _minimumValue.value = true
+        }
+        else{
+            _credits.value = (_credits.value)?.plus(1)
+            _belief.value = (_belief.value)?.minus(1)
         }
     }
 
 
+    //adiciona e remove Ataque Poderoso
+    fun addCrtAttk(){
+       if(criticalAttack.value!! && !restTwo()){
+           _credits.value = (_credits.value)?.minus(2)
+       }
+        else if (criticalAttack.value!! && restTwo()){
+           criticalAttack.value = false
+           _noCreditsError.value = true
+       }
+        else{
+           _credits.value = (_credits.value)?.plus(2)
+       }
+    }
 
+    //adiciona e remove Regeneração Acelerada
+    fun addFastRegen(){
+        if(fastRegen.value!! && !restTwo()){
+            _credits.value = (_credits.value)?.minus(2)
+        }
+        else if (fastRegen.value!! && restTwo()){
+            fastRegen.value = false
+            _noCreditsError.value = true
+        }
+        else{
+            _credits.value = (_credits.value)?.plus(2)
+        }
+    }
+
+    //adiciona e remove Avaliação Precisa
+    fun addPreciseEvaluation(){
+        if(preciseEvaluation.value!! && !restTwo()){
+            _credits.value = (_credits.value)?.minus(2)
+        }
+        else if (preciseEvaluation.value!! && restTwo()){
+            preciseEvaluation.value = false
+            _noCreditsError.value = true
+        }
+        else{
+            _credits.value = (_credits.value)?.plus(2)
+        }
+    }
 
 
     //métodos de validação de regra do crédito
     private fun restTwo(): Boolean {return (_credits.value!! < 2)}
     private fun restOne(): Boolean {return (_credits.value!! < 1)}
-    private fun verifyMinTwo(): Boolean{return (_credits.value!!) > 18 || (_dexterity.value!!) == 7}
+    private fun verifyMinTwo(): Boolean{return (_credits.value!!) > 8 || (_dexterity.value!!) == 7}
+    private fun verifyMinLife(): Boolean{return (_credits.value!!) > 9 || (_life.value!!) == 20}
+    private fun verifyMinBelief(): Boolean{return (_credits.value!!) > 9 || (_belief.value!!) == 7}
 
 
 

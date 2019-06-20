@@ -40,7 +40,8 @@
                 android:id="@+id/scroll" android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/label_credits" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toTopOf="@+id/btn_done_char">
+                app:layout_constraintBottom_toTopOf="@+id/btn_done_char" app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintVertical_bias="1.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -71,7 +72,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/dexpb"
                         app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-                        android:onClick="@{() ->characterViewModel.removeDexterity()}"/>
+                        android:onClick="@{() ->characterViewModel.removeDex()}"/>
                 <TextView
                         android:text="@string/label_dexterity_dsc"
                         android:layout_width="0dp"
@@ -80,7 +81,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginTop="8dp"
                         app:layout_constraintTop_toBottomOf="@+id/dexpb"
-                        android:textSize="14sp"  android:layout_marginEnd="16dp"
+                        android:textSize="14sp" android:layout_marginEnd="16dp"
                         android:textAlignment="textStart"/>
                 <TextView
                         android:text="@{@string/character_value_format(characterViewModel.life)}"
@@ -98,7 +99,8 @@
                         android:layout_marginTop="32dp"
                         app:layout_constraintTop_toBottomOf="@+id/label_dexterity_dsc"
                         app:layout_constraintEnd_toStartOf="@+id/lifemin"
-                        app:layout_constraintStart_toStartOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:onClick="@{() ->characterViewModel.addLife()}"/>
                 <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" app:srcCompat="@drawable/minus"
@@ -106,7 +108,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginTop="32dp"
                         app:layout_constraintTop_toBottomOf="@+id/label_dexterity_dsc"
-                        app:layout_constraintStart_toEndOf="@+id/lifepb" app:layout_constraintHorizontal_bias="0.5"/>
+                        app:layout_constraintStart_toEndOf="@+id/lifepb" app:layout_constraintHorizontal_bias="0.5"
+                        android:onClick="@{() ->characterViewModel.removeLife()}"/>
                 <TextView
                         android:text="@string/label_life_desc"
                         android:layout_width="0dp"
@@ -127,21 +130,25 @@
                         android:layout_height="wrap_content" app:srcCompat="@drawable/plus"
                         android:id="@+id/beliefpb" android:layout_marginTop="32dp"
                         app:layout_constraintTop_toBottomOf="@+id/label_life_desc"
-                        app:layout_constraintEnd_toStartOf="@+id/beliefmin" app:layout_constraintStart_toStartOf="parent"/>
+                        app:layout_constraintEnd_toStartOf="@+id/beliefmin"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:onClick="@{() ->characterViewModel.addBelief()}"/>
                 <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" app:srcCompat="@drawable/minus"
                         android:id="@+id/beliefmin" android:layout_marginTop="32dp"
                         app:layout_constraintTop_toBottomOf="@+id/label_life_desc"
                         app:layout_constraintStart_toEndOf="@+id/beliefpb" app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:onClick="@{() ->characterViewModel.removeBelief()}"/>
                 <TextView
                         android:text="@string/label_belief_desc"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/label_belief_desc" android:layout_marginTop="8dp"
                         app:layout_constraintTop_toBottomOf="@+id/beliefpb" app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="16dp" android:textAlignment="textStart"/>
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="16dp"
+                        android:textAlignment="textStart"/>
                 <TextView
                         android:text="@string/label_talentos"
                         android:layout_width="wrap_content"
@@ -155,7 +162,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/label_talentos_desc" android:layout_marginTop="8dp"
-                        app:layout_constraintTop_toBottomOf="@+id/label_talentos" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/label_talentos"
+                        app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="16dp" app:layout_constraintStart_toStartOf="parent"
                         android:textAlignment="textStart"/>
                 <Switch
@@ -165,30 +173,37 @@
                         android:id="@+id/button_critical_strike" android:layout_marginTop="16dp"
                         app:layout_constraintTop_toBottomOf="@+id/label_talentos_desc" android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:switchPadding="@dimen/eight_dp"/>
+                        android:switchPadding="@dimen/eight_dp"
+                        android:checked="@={characterViewModel.criticalAttack}"
+                        android:onClick="@{() ->characterViewModel.addCrtAttk()}"/>
                 <TextView
                         android:text="@string/label_critical_strike_desc"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/label_critical_strike_desc" app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="8dp"
-                        app:layout_constraintTop_toBottomOf="@+id/button_critical_strike" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/button_critical_strike"
+                        app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="16dp"/>
                 <Switch
                         android:text="@string/label_fast_regen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/button_fast_regeneration" android:textStyle="bold"
-                        android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/label_critical_strike_desc"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintTop_toBottomOf="@+id/label_critical_strike_desc"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:switchPadding="@dimen/eight_dp"/>
+                        android:switchPadding="@dimen/eight_dp"
+                        android:checked="@={characterViewModel.fastRegen}"
+                        android:onClick="@{() ->characterViewModel.addFastRegen()}"/>
                 <TextView
                         android:text="@string/label_fast_regen_desc"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/label_fast_regen_desc"
                         android:layout_marginTop="8dp"
-                        app:layout_constraintTop_toBottomOf="@+id/button_fast_regeneration" android:textAlignment="textStart"
+                        app:layout_constraintTop_toBottomOf="@+id/button_fast_regeneration"
+                        android:textAlignment="textStart"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent"/>
                 <Switch
@@ -199,7 +214,9 @@
                         tools:text="@string/button_precise_evaluation_label" android:switchPadding="@dimen/eight_dp"
                         android:textStyle="bold" android:layout_marginTop="16dp"
                         app:layout_constraintTop_toBottomOf="@+id/label_fast_regen_desc"
-                        app:layout_constraintStart_toStartOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:checked="@={characterViewModel.preciseEvaluation}"
+                        android:onClick="@{() ->characterViewModel.addPreciseEvaluation()}"/>
                 <TextView
                         android:text="@string/label_precise_evaluation_desc"
                         android:layout_width="0dp"
@@ -207,7 +224,8 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintTop_toBottomOf="@+id/button_precise_evaluation"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:id="@+id/label_precise_evaluation_desc" tools:text="@string/label_precise_evaluation_desc"
+                        android:id="@+id/label_precise_evaluation_desc"
+                        tools:text="@string/label_precise_evaluation_desc"
                         app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
