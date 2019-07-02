@@ -2,6 +2,33 @@
     <string name="app_name">ProtoLM</string>
     <string name="label_title">Labirinto da Morte</string>
     <string name="label_bt_startgame">Nova Partida</string>
+    <string name="no_creds_msg">Créditos Insuficientes</string>
+    <string name="min_val_msg">Não foi possível reduzir atributo</string>
+    <string name="creds_unspent_msg">Distribua os créditos que sobram</string>
+    <string name="pref_key">Personagem</string>
+
+    <string name="intro_text">O reino de Valguardia foi governado por anos pelo Rei William Woodshield, um regente nobre
+        e justo, mas que nunca teve filhos. Agora, já um ancião, Sir William busca um herdeiro digno para continuar seu
+        legado.
+        Para isso, o velho soberano construiu um labirinto nas entranhas de uma montanha afastada e determinou que
+        qualquer um que
+        deseje ser escolhido deverá primeiro cruzá-lo. O caminho até a saída está repleto de armadilhas, monstros e
+        desafios que
+        irão requerer coragem, destreza e inteligência para serem superados.
+        Você quer provar que é capaz de cruzar o labirinto e tornar-se o novo regente de Valguardia. Seu corpo forte,
+        sua mente
+        afiada e sua espada rápida estão prontos, mas sua maior força está na confiança que as pessoas depositam em
+        você.
+        No dia do desafio você é conduzido junto de outros três candidatos até a entrada do labirinto – um elfo com um
+        arco
+        longo, uma mulher com um cajado brilhante e um guerreiro cujos músculos desmentem a idade dos cabelos grisalhos.
+        Você possui uma espada e um punhal, que deve anotar em sua Folha de Aventuras. Sir William surge carregado em
+        uma
+        liteira por um grupo de soldados e deseja boa sorte a cada um de vocês. Uma pesada porta de ferro é aberta e um
+        escrivão ordena que o primeiro desafiante entre. Cada um dos seguintes avança labirinto adentro meia-hora depois
+        do
+        anterior. Você é o último a entrar. Sua aventura começa aqui!
+    </string>
 
 
     <string name="character_value_format">%d</string>
@@ -18,7 +45,8 @@
         custam 1 crédito
     </string>
     <string name="label_belief_desc">Convicção: representa a sua confiança e força de vontade. Sua convição inicial é
-        7 e cada ponto extra custa 1 crédito</string>
+        7 e cada ponto extra custa 1 crédito
+    </string>
     <string name="label_talentos">Talentos</string>
     <string name="label_talents_desc">Representam habilidades especiais. A cada aventura você poderá usar uma vez cada
         talento. Cada talento custa 2 créditos
@@ -31,4 +59,7 @@
     <string name="label_precise_evaluation_desc">Obtém sucesso imediato em um teste de destreza ou convicção</string>
     <string name="label_credits">10</string>
     <string name="label_btn_continue">continue</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,8 +1,10 @@
 package com.example.protolm.character
 
+import androidx.databinding.Bindable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.protolm.App
 
 class CharacterViewModel: ViewModel() {
 
@@ -30,19 +32,21 @@ class CharacterViewModel: ViewModel() {
     val preciseEvaluation = MutableLiveData<Boolean>()
 
 
-
     //propriedade de validação
     private val _noCreditsError = MutableLiveData<Boolean>()
     val noCreditsError: LiveData<Boolean>
         get() = _noCreditsError
 
-    private val _minimumValue = MutableLiveData<Boolean>()
-    val minimumValue: LiveData<Boolean>
-        get() = _minimumValue
+    private val _minimumValueError = MutableLiveData<Boolean>()
+    val minimumValueError: LiveData<Boolean>
+        get() = _minimumValueError
 
-    private val _creditsLeft = MutableLiveData<Boolean>()
-    val creditsLeft: LiveData<Boolean>
-        get() = _creditsLeft
+    private val _creditsLeftError = MutableLiveData<Boolean>()
+    val creditsLeftError: LiveData<Boolean>
+        get() = _creditsLeftError
+
+    //propriedade de navegação
+    val goToGame = MutableLiveData<Boolean>()
 
 
 
@@ -55,6 +59,10 @@ class CharacterViewModel: ViewModel() {
         criticalAttack.value = false
         preciseEvaluation.value = false
         fastRegen.value = false
+        _noCreditsError.value = false
+        _minimumValueError.value = false
+        _creditsLeftError.value = false
+        goToGame.value = false
     }
 
     //métodos para os botões
@@ -73,7 +81,7 @@ class CharacterViewModel: ViewModel() {
     //remove destreza
     fun removeDex(){
         if(verifyMinTwo()){
-            _minimumValue.value = true
+            _minimumValueError.value = true
         }
         else{
             _credits.value = (_credits.value)?.plus(2)
@@ -95,7 +103,7 @@ class CharacterViewModel: ViewModel() {
     //remove vida
     fun removeLife(){
         if(verifyMinLife()){
-            _minimumValue.value = true
+            _minimumValueError.value = true
         }
         else{
             _credits.value = (_credits.value)?.plus(1)
@@ -117,7 +125,7 @@ class CharacterViewModel: ViewModel() {
     //remove convicção
     fun removeBelief(){
         if(verifyMinBelief()){
-            _minimumValue.value = true
+            _minimumValueError.value = true
         }
         else{
             _credits.value = (_credits.value)?.plus(1)
@@ -176,6 +184,26 @@ class CharacterViewModel: ViewModel() {
     private fun verifyMinLife(): Boolean{return (_credits.value!!) > 9 || (_life.value!!) == 20}
     private fun verifyMinBelief(): Boolean{return (_credits.value!!) > 9 || (_belief.value!!) == 7}
 
+    fun saveChar(){
+        if(_credits.value!! > 0){
+            _creditsLeftError.value = true
+        }
+        else{
+            App.prefs!!.dexterity = _dexterity.value!!
+            App.prefs!!.life = _life.value!!
+            App.prefs!!.belief = _belief.value!!
+            App.prefs!!.critAttk = criticalAttack.value!!
+            App.prefs!!.fastRegen = fastRegen.value!!
+            App.prefs!!.precEval = preciseEvaluation.value!!
+            goToGame.value = true
+        }
 
+    }
+
+    fun doneShowingSnackbar() {
+        _noCreditsError.value = false
+        _minimumValueError.value = false
+        _creditsLeftError.value = false
+    }
 
 }

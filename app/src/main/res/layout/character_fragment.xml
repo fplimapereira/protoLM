@@ -15,7 +15,7 @@
             android:id="@+id/character_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".title.CharacterFragment">
+            tools:context=".character.CharacterFragment">
 
 
         <TextView
@@ -246,6 +246,7 @@
                 android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp" android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:onClick="@{() ->characterViewModel.saveChar()}"/>
         />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

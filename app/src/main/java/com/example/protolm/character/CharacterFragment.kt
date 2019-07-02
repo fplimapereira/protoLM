@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.protolm.databinding.CharacterFragmentBinding
 
 import com.example.protolm.R
@@ -37,7 +38,7 @@ class CharacterFragment : Fragment() {
                 Snackbar.make(
                     activity!!.findViewById(android.R.id.content),
                     getString(R.string.no_creds_msg),
-                    Snackbar.LENGTH_SHORT // How long to display the message.
+                    Snackbar.LENGTH_SHORT
                 ).show()
             }
         })
@@ -47,7 +48,7 @@ class CharacterFragment : Fragment() {
                 Snackbar.make(
                     activity!!.findViewById(android.R.id.content),
                     getString(R.string.min_val_msg),
-                    Snackbar.LENGTH_SHORT // How long to display the message.
+                    Snackbar.LENGTH_SHORT
                 ).show()
             }
         })
@@ -57,10 +58,18 @@ class CharacterFragment : Fragment() {
                 Snackbar.make(
                     activity!!.findViewById(android.R.id.content),
                     getString(R.string.creds_unspent_msg),
-                    Snackbar.LENGTH_SHORT // How long to display the message.
+                    Snackbar.LENGTH_SHORT
                 ).show()
             }
         })
+
+        viewModel.goToGame.observe(this, Observer {
+            if(it == true){
+                this.findNavController().navigate(CharacterFragmentDirections.actionCharacterFragmentToIntroFragment())
+            }
+        })
+
+
         return binding.root
     }
 

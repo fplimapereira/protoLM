@@ -1,22 +1,16 @@
 package com.example.protolm
-
 import android.app.Application
-import com.example.protolm.repository.AppComponent
-import com.example.protolm.repository.AppModule
-import com.example.protolm.repository.DaggerAppComponent
+import com.example.protolm.data.Prefs
+
 
 open class App : Application(){
 
-   private val component: AppComponent by lazy {
-        DaggerAppComponent
-            .builder()
-            .appModule(AppModule(this))
-            .build()
+    companion object {
+        var prefs: Prefs? = null
     }
 
     override fun onCreate() {
+        prefs = Prefs(applicationContext)
         super.onCreate()
-        component.inject(this)
     }
-
 }
