@@ -28,7 +28,9 @@ class CharacterFragment : Fragment() {
          binding = DataBindingUtil.inflate(
             inflater, R.layout.character_fragment, container, false)
 
-        viewModel = ViewModelProviders.of(this).get(CharacterViewModel::class.java)
+        val application = requireNotNull(this.activity).application
+        val viewModelFactory = CharacterViewModelFactory(application)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(CharacterViewModel::class.java)
 
         binding.characterViewModel = viewModel
         binding.setLifecycleOwner(this)

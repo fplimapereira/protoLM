@@ -1,12 +1,13 @@
 package com.example.protolm.character
 
-import androidx.databinding.Bindable
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.protolm.App
+import com.example.protolm.data.Character
+import com.example.protolm.data.ScriptRepository
 
-class CharacterViewModel: ViewModel() {
+class CharacterViewModel(val app: Application): ViewModel() {
 
     //propriedades de modelo
     private val _credits = MutableLiveData<Int>()
@@ -31,7 +32,6 @@ class CharacterViewModel: ViewModel() {
 
     val preciseEvaluation = MutableLiveData<Boolean>()
 
-
     //propriedade de validação
     private val _noCreditsError = MutableLiveData<Boolean>()
     val noCreditsError: LiveData<Boolean>
@@ -47,6 +47,9 @@ class CharacterViewModel: ViewModel() {
 
     //propriedade de navegação
     val goToGame = MutableLiveData<Boolean>()
+
+    // Objeto repositório personagem
+    val repo: ScriptRepository = ScriptRepository(app)
 
 
 
@@ -189,12 +192,9 @@ class CharacterViewModel: ViewModel() {
             _creditsLeftError.value = true
         }
         else{
-            App.prefs!!.dexterity = _dexterity.value!!
-            App.prefs!!.life = _life.value!!
-            App.prefs!!.belief = _belief.value!!
-            App.prefs!!.critAttk = criticalAttack.value!!
-            App.prefs!!.fastRegen = fastRegen.value!!
-            App.prefs!!.precEval = preciseEvaluation.value!!
+            val char = Character(_dexterity.value!!, _dexterity.value!!, _life.value!!, _life.value!!, _belief.value!!, _belief.value!!,  criticalAttack.value!!, fastRegen.value!!, preciseEvaluation.value!!)
+
+
             goToGame.value = true
         }
 
