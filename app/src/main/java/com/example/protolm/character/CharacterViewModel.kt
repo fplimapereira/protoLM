@@ -192,12 +192,9 @@ class CharacterViewModel(val app: Application): ViewModel() {
             _creditsLeftError.value = true
         }
         else{
-            val char = Character(_dexterity.value!!, _dexterity.value!!, _life.value!!, _life.value!!, _belief.value!!, _belief.value!!,  criticalAttack.value!!, fastRegen.value!!, preciseEvaluation.value!!)
-
-
+            val char = Character(_dexterity.value!!, _life.value!!, _belief.value!!, criticalAttack.value!!, fastRegen.value!!, preciseEvaluation.value!!)
             goToGame.value = true
         }
-
     }
 
     fun doneShowingSnackbar() {
