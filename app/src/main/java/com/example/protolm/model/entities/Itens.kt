@@ -1,4 +1,4 @@
-package com.example.protolm.model.datamodels
+package com.example.protolm.model.entities
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo

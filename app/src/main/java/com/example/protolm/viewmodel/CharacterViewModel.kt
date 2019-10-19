@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.protolm.model.datamodels.Character
-import com.example.protolm.model.datamodels.ScriptRepository
+import com.example.protolm.model.entities.Character
+import com.example.protolm.model.entities.ScriptRepository
 
 class CharacterViewModel(val app: Application): ViewModel() {
 

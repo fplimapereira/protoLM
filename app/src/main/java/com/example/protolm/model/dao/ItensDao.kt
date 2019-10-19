@@ -2,7 +2,7 @@ package com.example.protolm.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.protolm.model.datamodels.Itens
+import com.example.protolm.model.entities.Itens
 
 @Dao
 interface ItensDao {
