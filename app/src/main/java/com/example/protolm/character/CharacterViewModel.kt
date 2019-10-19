@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.protolm.data.Character
-import com.example.protolm.data.ScriptRepository
+import com.example.protolm.model.datamodels.Character
+import com.example.protolm.model.datamodels.ScriptRepository
 
 class CharacterViewModel(val app: Application): ViewModel() {
 
@@ -49,7 +49,8 @@ class CharacterViewModel(val app: Application): ViewModel() {
     val goToGame = MutableLiveData<Boolean>()
 
     // Objeto repositório personagem
-    val repo: ScriptRepository = ScriptRepository(app)
+    val repo: ScriptRepository =
+        ScriptRepository(app)
 
 
 
@@ -192,7 +193,14 @@ class CharacterViewModel(val app: Application): ViewModel() {
             _creditsLeftError.value = true
         }
         else{
-            val char = Character(_dexterity.value!!, _life.value!!, _belief.value!!, criticalAttack.value!!, fastRegen.value!!, preciseEvaluation.value!!)
+            val char = Character(
+                _dexterity.value!!,
+                _life.value!!,
+                _belief.value!!,
+                criticalAttack.value!!,
+                fastRegen.value!!,
+                preciseEvaluation.value!!
+            )
             goToGame.value = true
         }
     }

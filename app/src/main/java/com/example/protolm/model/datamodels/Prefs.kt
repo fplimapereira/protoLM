@@ -1,9 +1,7 @@
-package com.example.protolm.data
+package com.example.protolm.model.datamodels
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.res.Resources
-import com.example.protolm.R
 
 class Prefs (context: Context) {
 

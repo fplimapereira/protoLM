@@ -3,7 +3,7 @@ package com.example.protolm.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.protolm.data.Eventos
+import com.example.protolm.model.datamodels.Eventos
 
 @Dao
 interface EventosDao {

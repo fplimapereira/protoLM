@@ -1,4 +1,4 @@
-package com.example.protolm.data
+package com.example.protolm.model.datamodels
 
 import android.app.Application
 
