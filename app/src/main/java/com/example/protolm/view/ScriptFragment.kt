@@ -1,4 +1,4 @@
-package com.example.protolm.script
+package com.example.protolm.view
 
 
 import android.os.Bundle

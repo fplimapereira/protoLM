@@ -1,4 +1,4 @@
-package com.example.protolm.title
+package com.example.protolm.view
 
 
 import android.os.Bundle
@@ -10,6 +10,7 @@ import com.example.protolm.R
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.protolm.databinding.TitleFragmentBinding
+import com.example.protolm.title.TitleFragmentDirections
 
 
 class TitleFragment : Fragment() {

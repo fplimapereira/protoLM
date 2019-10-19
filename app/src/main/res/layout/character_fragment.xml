@@ -8,14 +8,14 @@
 
         <variable
                 name="characterViewModel"
-                type="com.example.protolm.character.CharacterViewModel" />
+                type="com.example.protolm.viewmodel.CharacterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/character_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".character.CharacterFragment">
+            tools:context=".view.CharacterFragment">
 
 
         <TextView

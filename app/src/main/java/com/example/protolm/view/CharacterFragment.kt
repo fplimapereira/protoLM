@@ -1,4 +1,4 @@
-package com.example.protolm.character
+package com.example.protolm.view
 
 
 import android.os.Bundle
@@ -13,6 +13,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.protolm.databinding.CharacterFragmentBinding
 
 import com.example.protolm.R
+import com.example.protolm.character.CharacterFragmentDirections
+import com.example.protolm.viewmodel.CharacterViewModel
+import com.example.protolm.factory.CharacterViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 
 

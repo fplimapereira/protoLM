@@ -1,4 +1,4 @@
-package com.example.protolm.character
+package com.example.protolm.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.LiveData
