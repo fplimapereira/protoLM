@@ -4,10 +4,16 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.protolm.di.CharComponent
+import com.example.protolm.di.DaggerCharComponent
 import com.example.protolm.model.entities.Character
-import com.example.protolm.model.entities.ScriptRepository
+import com.example.protolm.repository.ScriptRepository
 
 class CharacterViewModel(val app: Application): ViewModel() {
+
+    var personagem: Character
+
+    val dagger: CharComponent = DaggerCharComponent.create()
 
     //propriedades de modelo
     private val _credits = MutableLiveData<Int>()
@@ -56,13 +62,14 @@ class CharacterViewModel(val app: Application): ViewModel() {
 
     //inicializando a VM
     init {
-        _credits.value = 10
-        _dexterity.value = 7
-        _life.value = 20
-        _belief.value = 7
-        criticalAttack.value = false
-        preciseEvaluation.value = false
-        fastRegen.value = false
+        personagem = dagger.injectChar()
+        _credits.value = personagem.credits
+        _dexterity.value = personagem.dext
+        _life.value = personagem.life
+        _belief.value = personagem.belief
+        criticalAttack.value = personagem.critAttack
+        preciseEvaluation.value = personagem.preVal
+        fastRegen.value = personagem.fastRegen
         _noCreditsError.value = false
         _minimumValueError.value = false
         _creditsLeftError.value = false
@@ -193,14 +200,7 @@ class CharacterViewModel(val app: Application): ViewModel() {
             _creditsLeftError.value = true
         }
         else{
-            val char = Character(
-                _dexterity.value!!,
-                _life.value!!,
-                _belief.value!!,
-                criticalAttack.value!!,
-                fastRegen.value!!,
-                preciseEvaluation.value!!
-            )
+
             goToGame.value = true
         }
     }

@@ -13,9 +13,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.protolm.databinding.CharacterFragmentBinding
 
 import com.example.protolm.R
-import com.example.protolm.character.CharacterFragmentDirections
 import com.example.protolm.viewmodel.CharacterViewModel
 import com.example.protolm.factory.CharacterViewModelFactory
+import com.example.protolm.view.CharacterFragmentDirections.*
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -70,7 +70,7 @@ class CharacterFragment : Fragment() {
 
         viewModel.goToGame.observe(this, Observer {
             if(it == true){
-                this.findNavController().navigate(CharacterFragmentDirections.actionCharacterFragmentToIntroFragment())
+                this.findNavController().navigate(actionCharacterFragmentToIntroFragment())
             }
         })
 

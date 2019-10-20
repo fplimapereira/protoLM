@@ -1,6 +1,14 @@
 package com.example.protolm.model.entities
 
-data class Character(val dext: Int, val life: Int, val belief: Int, val critAttack: Boolean, val fastRegen: Boolean, val preVal: Boolean) {
+import javax.inject.Inject
+
+data class Character @Inject constructor(var dext: Int,
+                     var life: Int,
+                     var belief: Int,
+                     var critAttack: Boolean,
+                     var fastRegen: Boolean,
+                     var preVal: Boolean,
+                     var credits: Int) {
 
 
 }

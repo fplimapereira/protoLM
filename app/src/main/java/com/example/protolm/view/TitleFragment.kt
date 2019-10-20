@@ -10,7 +10,7 @@ import com.example.protolm.R
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.protolm.databinding.TitleFragmentBinding
-import com.example.protolm.title.TitleFragmentDirections
+import com.example.protolm.view.TitleFragmentDirections.*
 
 
 class TitleFragment : Fragment() {
@@ -22,7 +22,7 @@ class TitleFragment : Fragment() {
             inflater, R.layout.title_fragment, container, false)
 
         binding.btStartGame.setOnClickListener {
-            it.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToCharacterFragment())
+            it.findNavController().navigate(actionTitleFragmentToCharacterFragment())
         }
 
         return binding.root
