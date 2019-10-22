@@ -15,6 +15,7 @@ import com.example.protolm.databinding.CharacterFragmentBinding
 import com.example.protolm.R
 import com.example.protolm.viewmodel.CharacterViewModel
 import com.example.protolm.factory.CharacterViewModelFactory
+import com.example.protolm.repository.CharacterRepository
 import com.example.protolm.view.CharacterFragmentDirections.*
 import com.google.android.material.snackbar.Snackbar
 
@@ -31,8 +32,9 @@ class CharacterFragment : Fragment() {
          binding = DataBindingUtil.inflate(
             inflater, R.layout.character_fragment, container, false)
 
-        val application = requireNotNull(this.activity).application
-        val viewModelFactory = CharacterViewModelFactory(application)
+        val context = requireNotNull(this.activity).applicationContext
+        val charRepo = CharacterRepository(context)
+        val viewModelFactory = CharacterViewModelFactory(charRepo)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(CharacterViewModel::class.java)
 
         binding.characterViewModel = viewModel
@@ -45,6 +47,7 @@ class CharacterFragment : Fragment() {
                     getString(R.string.no_creds_msg),
                     Snackbar.LENGTH_SHORT
                 ).show()
+                viewModel.doneShowingSnackbar()
             }
         })
 
@@ -55,6 +58,7 @@ class CharacterFragment : Fragment() {
                     getString(R.string.min_val_msg),
                     Snackbar.LENGTH_SHORT
                 ).show()
+                viewModel.doneShowingSnackbar()
             }
         })
 
@@ -65,12 +69,14 @@ class CharacterFragment : Fragment() {
                     getString(R.string.creds_unspent_msg),
                     Snackbar.LENGTH_SHORT
                 ).show()
+                viewModel.doneShowingSnackbar()
             }
         })
 
         viewModel.goToGame.observe(this, Observer {
             if(it == true){
                 this.findNavController().navigate(actionCharacterFragmentToIntroFragment())
+                viewModel.doneNavigating()
             }
         })
 
