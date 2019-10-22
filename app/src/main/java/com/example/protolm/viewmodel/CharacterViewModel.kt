@@ -80,7 +80,7 @@ class CharacterViewModel(val app: Application): ViewModel() {
 
     //adiciona destreza
     fun addDex(){
-        if(restTwo()){
+        if(personagem.addDextery(_credits.value!!)){
             _noCreditsError.value = true
         }
         else{
@@ -91,7 +91,7 @@ class CharacterViewModel(val app: Application): ViewModel() {
 
     //remove destreza
     fun removeDex(){
-        if(verifyMinTwo()){
+        if(personagem.removeDexterity(_credits.value!!, _dexterity.value!!)){
             _minimumValueError.value = true
         }
         else{
@@ -102,7 +102,7 @@ class CharacterViewModel(val app: Application): ViewModel() {
 
     //adiciona vida
     fun addLife(){
-        if(restOne()){
+        if(personagem.addLife(_credits.value!!)){
             _noCreditsError.value = true
         }
         else{
@@ -113,7 +113,7 @@ class CharacterViewModel(val app: Application): ViewModel() {
 
     //remove vida
     fun removeLife(){
-        if(verifyMinLife()){
+        if(personagem.removeLife(_credits.value!!, _life.value!!)){
             _minimumValueError.value = true
         }
         else{
@@ -124,7 +124,7 @@ class CharacterViewModel(val app: Application): ViewModel() {
 
     //adiciona convicção
     fun addBelief(){
-        if(restOne()){
+        if(personagem.addBelief(_credits.value!!)){
             _noCreditsError.value = true
         }
         else{
@@ -135,7 +135,7 @@ class CharacterViewModel(val app: Application): ViewModel() {
 
     //remove convicção
     fun removeBelief(){
-        if(verifyMinBelief()){
+        if(personagem.removeBelief(_credits.value!!, _belief.value!!)){
             _minimumValueError.value = true
         }
         else{
@@ -147,53 +147,44 @@ class CharacterViewModel(val app: Application): ViewModel() {
 
     //adiciona e remove Ataque Poderoso
     fun addCrtAttk(){
-       if(criticalAttack.value!! && !restTwo()){
-           _credits.value = (_credits.value)?.minus(2)
-       }
-        else if (criticalAttack.value!! && restTwo()){
-           criticalAttack.value = false
-           _noCreditsError.value = true
-       }
-        else{
-           _credits.value = (_credits.value)?.plus(2)
-       }
+        when (personagem.verifySkill(criticalAttack.value!!, _credits.value!!)){
+            1-> _credits.value = (_credits.value)?.minus(2)
+            2-> {
+                criticalAttack.value = false
+                _noCreditsError.value = true
+            }
+            3-> _credits.value = (_credits.value)?.plus(2)
+        }
     }
 
     //adiciona e remove Regeneração Acelerada
     fun addFastRegen(){
-        if(fastRegen.value!! && !restTwo()){
-            _credits.value = (_credits.value)?.minus(2)
-        }
-        else if (fastRegen.value!! && restTwo()){
-            fastRegen.value = false
-            _noCreditsError.value = true
-        }
-        else{
-            _credits.value = (_credits.value)?.plus(2)
+        when (personagem.verifySkill(fastRegen.value!!, _credits.value!!)){
+            1-> _credits.value = (_credits.value)?.minus(2)
+            2-> {
+                fastRegen.value = false
+                _noCreditsError.value = true
+            }
+            3-> _credits.value = (_credits.value)?.plus(2)
         }
     }
 
     //adiciona e remove Avaliação Precisa
     fun addPreciseEvaluation(){
-        if(preciseEvaluation.value!! && !restTwo()){
-            _credits.value = (_credits.value)?.minus(2)
-        }
-        else if (preciseEvaluation.value!! && restTwo()){
-            preciseEvaluation.value = false
-            _noCreditsError.value = true
-        }
-        else{
-            _credits.value = (_credits.value)?.plus(2)
+        when (personagem.verifySkill(preciseEvaluation.value!!, _credits.value!!)){
+            1-> _credits.value = (_credits.value)?.minus(2)
+            2-> {
+                preciseEvaluation.value = false
+                _noCreditsError.value = true
+            }
+            3-> _credits.value = (_credits.value)?.plus(2)
         }
     }
 
 
     //métodos de validação de regra do crédito
     private fun restTwo(): Boolean {return (_credits.value!! < 2)}
-    private fun restOne(): Boolean {return (_credits.value!! < 1)}
-    private fun verifyMinTwo(): Boolean{return (_credits.value!!) > 8 || (_dexterity.value!!) == 7}
-    private fun verifyMinLife(): Boolean{return (_credits.value!!) > 9 || (_life.value!!) == 20}
-    private fun verifyMinBelief(): Boolean{return (_credits.value!!) > 9 || (_belief.value!!) == 7}
+
 
     fun saveChar(){
         if(_credits.value!! > 0){
