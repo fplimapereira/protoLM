@@ -3,12 +3,16 @@ package com.example.protolm.model.entities
 import javax.inject.Inject
 
 data class Character @Inject constructor(var dext: Int,
+                     var maxDex:Int,
                      var life: Int,
+                     var maxLife: Int,
                      var belief: Int,
+                     var maxBelief: Int,
                      var critAttack: Boolean,
                      var fastRegen: Boolean,
                      var preVal: Boolean,
                      var credits: Int) {
+
 
     fun addDextery(credit: Int): Boolean = this.restTwo(credit!!)
 
@@ -33,7 +37,10 @@ data class Character @Inject constructor(var dext: Int,
     }
 
 
+    fun spendPoints(credit: Int): Boolean = credit == 0
+
     //métodos de validação de regra do crédito
+
     private fun restTwo(credit: Int): Boolean {return credit < 2}
 
     private fun restOne(credit: Int): Boolean {return credit < 1}
@@ -43,5 +50,6 @@ data class Character @Inject constructor(var dext: Int,
     private fun verifyMinLife(credit: Int, life: Int): Boolean{return credit > 9 || life == 20}
 
     private fun verifyMinBelief(credit: Int, belief: Int): Boolean{return credit > 9 || belief == 7}
+
 
 }
