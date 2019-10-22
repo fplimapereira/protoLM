@@ -1,19 +1,18 @@
 package com.example.protolm.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.protolm.di.CharComponent
 import com.example.protolm.di.DaggerCharComponent
 import com.example.protolm.model.entities.Character
-import com.example.protolm.repository.ScriptRepository
+import com.example.protolm.repository.CharacterRepository
 
-class CharacterViewModel(val app: Application): ViewModel() {
+class CharacterViewModel(val charRepo: CharacterRepository): ViewModel() {
 
     var personagem: Character
 
-    val dagger: CharComponent = DaggerCharComponent.create()
+    private val dagger: CharComponent = DaggerCharComponent.create()
 
     //propriedades de modelo
     private val _credits = MutableLiveData<Int>()
@@ -53,12 +52,6 @@ class CharacterViewModel(val app: Application): ViewModel() {
 
     //propriedade de navegação
     val goToGame = MutableLiveData<Boolean>()
-
-    // Objeto repositório personagem
-    val repo: ScriptRepository =
-        ScriptRepository(app)
-
-
 
     //inicializando a VM
     init {
@@ -181,20 +174,28 @@ class CharacterViewModel(val app: Application): ViewModel() {
         }
     }
 
-
-    //métodos de validação de regra do crédito
-    private fun restTwo(): Boolean {return (_credits.value!! < 2)}
-
-
+    //armazena os valores da vm e invoca o método de salvar do repositório
     fun saveChar(){
-        if(_credits.value!! > 0){
-            _creditsLeftError.value = true
-        }
-        else{
 
+        if (personagem.spendPoints(_credits.value!!)){
+            personagem.dext = _dexterity.value!!
+            personagem.maxDex = _dexterity.value!!
+            personagem.life = _life.value!!
+            personagem.maxLife = _life.value!!
+            personagem.belief = _belief.value!!
+            personagem.maxBelief = _belief.value!!
+            personagem.critAttack = criticalAttack.value!!
+            personagem.fastRegen = fastRegen.value!!
+            personagem.preVal = preciseEvaluation.value!!
+            charRepo.saveChar(personagem)
             goToGame.value = true
         }
+
+        else
+            _creditsLeftError.value = true
     }
+
+    fun doneNavigating(){goToGame.value = false}
 
     fun doneShowingSnackbar() {
         _noCreditsError.value = false
