@@ -9,7 +9,7 @@ class CharModule {
 
     @Provides
     fun provideCharacter(): Character {
-        var personagem = Character(7, 20,7, 0, 7, 0, false, false, false, 10)
+        var personagem = Character(7, 0,20, 0, 7, 0, false, false, false, 10)
         return personagem
     }
 }
