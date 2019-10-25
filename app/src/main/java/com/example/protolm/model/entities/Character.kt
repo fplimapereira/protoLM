@@ -14,7 +14,7 @@ data class Character @Inject constructor(var dext: Int,
                      var credits: Int) {
 
 
-    fun addDextery(credit: Int): Boolean = this.restTwo(credit!!)
+    fun addDextery(credit: Int): Boolean = this.restTwo(credit)
 
     fun removeDexterity(credit: Int, dexterity: Int): Boolean = this.verifyMinTwo(credit, dexterity)
 
