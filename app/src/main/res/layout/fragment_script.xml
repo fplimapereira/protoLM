@@ -5,14 +5,15 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="viewModel" type="com.example.protolm.viewmodel.ScriptViewModel"/>
+        <variable name="viewModel"
+                  type="com.example.protolm.viewmodel.ScriptViewModel"/>
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
-            android:id="@+id/title_layout"
+            android:id="@+id/script_Fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".protolm.view.ScriptFragment">
+            tools:context=".view.ScriptFragment">
 
         <ScrollView
                 android:id="@+id/scroll"
