@@ -12,12 +12,12 @@ import com.example.protolm.R
 import com.example.protolm.factory.ScriptViewModelFactory
 import com.example.protolm.factory.SwitcherFactory
 import com.example.protolm.viewmodel.ScriptViewModel
-import com.example.protolm.databinding.ScriptFragmentBinding
+import com.example.protolm.databinding.FragmentScriptBinding
 
 
 class ScriptFragment: Fragment() {
 
-    lateinit var binding: ScriptFragmentBinding
+    lateinit var binding: FragmentScriptBinding
 
 
     override fun onCreateView(
