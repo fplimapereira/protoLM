@@ -9,89 +9,107 @@
                   type="com.example.protolm.viewmodel.ScriptViewModel"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/script_fragment"
+    <androidx.drawerlayout.widget.DrawerLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".view.ScriptFragment">
+            android:id="@+id/script_fragment">
 
-        <ScrollView
-                android:id="@+id/scroll"
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/button">
+                android:layout_height="match_parent"
+                tools:context=".view.ScriptFragment">
 
-            <LinearLayout
+            <ScrollView
+                    android:id="@+id/scroll"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                <TextView
-                        android:id="@+id/tx_resultado"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="sucesso no teste de destreza"
-                        android:visibility="gone"/>
+                    android:layout_height="0dp" android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp" android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/button">
 
-                <TextSwitcher
-                        android:fontFamily="sans-serif-condensed"
-                        android:id="@+id/tv_switch"
-                        android:layout_height="wrap_content"
+                <LinearLayout
                         android:layout_width="match_parent"
-                        android:inAnimation="@android:anim/fade_in"
-                        android:outAnimation="@android:anim/fade_out">
-                </TextSwitcher>
-                <RadioGroup
-                        android:id="@+id/radioGroup"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp">
-                    <RadioButton
-                            android:text=""
-                            android:layout_width="match_parent"
+                        android:orientation="vertical">
+                    <TextView
+                            android:id="@+id/tx_resultado"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/radioButton"
-                            android:onClick="@{()->viewModel.getPonteiro(1)}"
-                            android:layout_marginBottom="8dp"/>
-                    <RadioButton
-                            android:text="RadioButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:id="@+id/radioButton2"
-                            android:onClick="@{()->viewModel.getPonteiro(2)}"
-                            android:layout_marginBottom="8dp"/>
-                    <RadioButton
-                            android:text="RadioButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:id="@+id/radioButton3"
-                            android:onClick="@{()->viewModel.getPonteiro(3)}"
-                            android:layout_marginBottom="8dp"/>
-                    <RadioButton
-                            android:text="RadioButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:id="@+id/radioButton4"
-                            android:onClick="@{()->viewModel.getPonteiro(4)}"
-                            android:layout_marginBottom="8dp"/>
-                </RadioGroup>
-            </LinearLayout>
-        </ScrollView>
+                            android:layout_marginBottom="8dp"
+                            android:text="sucesso no teste de destreza"
+                            android:visibility="gone"/>
 
-        <Button
-                android:text="Button"
+                    <TextSwitcher
+                            android:fontFamily="sans-serif-condensed"
+                            android:id="@+id/tv_switch"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:inAnimation="@android:anim/fade_in"
+                            android:outAnimation="@android:anim/fade_out">
+                    </TextSwitcher>
+                    <RadioGroup
+                            android:id="@+id/radioGroup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp">
+                        <RadioButton
+                                android:text=""
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/radioButton"
+                                android:onClick="@{()->viewModel.getPonteiro(1)}"
+                                android:layout_marginBottom="8dp"/>
+                        <RadioButton
+                                android:text="RadioButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:id="@+id/radioButton2"
+                                android:onClick="@{()->viewModel.getPonteiro(2)}"
+                                android:layout_marginBottom="8dp"/>
+                        <RadioButton
+                                android:text="RadioButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:id="@+id/radioButton3"
+                                android:onClick="@{()->viewModel.getPonteiro(3)}"
+                                android:layout_marginBottom="8dp"/>
+                        <RadioButton
+                                android:text="RadioButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:id="@+id/radioButton4"
+                                android:onClick="@{()->viewModel.getPonteiro(4)}"
+                                android:layout_marginBottom="8dp"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </ScrollView>
+
+            <Button
+                    android:text="Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp" android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    android:onClick="@{()-> viewModel.tomarAcao()}"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.navigation.NavigationView
+                android:id="@+id/nav_view"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp" android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                android:onClick="@{()-> viewModel.tomarAcao()}"
-        />
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@android:color/transparent"
+                android:fitsSystemWindows="false">
+            <include
+                    layout="@layout/battle_drawer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
 
+        </com.google.android.material.navigation.NavigationView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </layout>
