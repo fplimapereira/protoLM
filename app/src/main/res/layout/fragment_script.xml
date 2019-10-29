@@ -9,8 +9,8 @@
                   type="com.example.protolm.viewmodel.ScriptViewModel"/>
     </data>
 
-    <androidx.drawerlayout.widget.DrawerLayout
-            android:id="@+id/script_Fragment"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/script_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".view.ScriptFragment">
@@ -90,21 +90,8 @@
                 android:onClick="@{()-> viewModel.tomarAcao()}"
         />
 
-        <com.google.android.material.navigation.NavigationView
-                android:id="@+id/nav_view"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:background="@android:color/transparent"
-                android:fitsSystemWindows="false">
-            <include
-                    layout="@layout/battle_drawer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
 
-        </com.google.android.material.navigation.NavigationView>
-
-    </androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>
