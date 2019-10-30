@@ -20,6 +20,7 @@ class CharacterRepository (context: Context) {
     val FR = "fast regeneration"
     val PE = "precise evaluation"
     val ATTK = "attack"
+    val IP = "ice protection"
 
 
     val prefs: SharedPreferences = context.getSharedPreferences(PREF_NAME, 0)
@@ -65,6 +66,10 @@ class CharacterRepository (context: Context) {
         get() = prefs.getBoolean(PE, false)
         set(value) = prefs.edit().putBoolean(PE, value).apply()
 
+    var iceProt: Boolean
+        get() = prefs.getBoolean(IP, false)
+        set(value) = prefs.edit().putBoolean(IP, value).apply()
+
 
     fun saveChar(char: Character){
         dexterity = char.dext
@@ -80,41 +85,66 @@ class CharacterRepository (context: Context) {
 
     }
 
-    fun applyEffectCaseOne(){
-        dexterity.plus(1)
-        maxDexterity.plus(1)
+    fun imputEffect(id: Int): Boolean {
+
+        var bol = false
+
+        when (id){
+            1-> applyEffectCaseOne()
+            2-> applyEffectCaseTwo()
+            3-> applyEffectCaseThree()
+            4-> applyEffectCaseFour()
+            5-> applyEffectCaseFive()
+            6-> applyEffectCaseSix()
+            7-> applyEffectCaseSeven()
+            8-> applyEffectCaseEight()
+            9-> applyEffectCaseNine()
+            99-> bol = true
+        }
+
+        if( life == 0) bol = true
+
+        return bol
     }
 
-    fun applyEffectCaseTwo(){
-        attack.minus(1)
+    private fun applyEffectCaseOne(){
+        dexterity = dexterity.plus(1)
+        maxDexterity =maxDexterity.plus(1)
     }
 
-    fun applyEffectCaseThree(){
-        attack.minus(1)
-        life.minus(4)
+    private fun applyEffectCaseTwo(){
+        attack = attack.minus(1)
     }
 
-    fun applyEffectCaseFour(){
-        belief.plus(1)
-        maxBelief.plus(1)
+    private fun applyEffectCaseThree(){
+        attack = attack.minus(1)
+        life = life.minus(4)
     }
 
-    fun applyEffectCaseFive(){
-        belief.minus(2)
+    private fun applyEffectCaseFour(){
+        belief = belief.plus(1)
+        maxBelief = maxBelief.plus(1)
     }
 
-    fun applyEffectCaseSix(){
-        belief.minus(1)
+    private fun applyEffectCaseFive(){
+        belief = belief.minus(2)
     }
 
-    fun applyEffectCaseSeven(){
-        dexterity.minus(2)
+    private fun applyEffectCaseSix(){
+        belief = belief.minus(1)
     }
 
-    fun applyEffectCaseEight(): Boolean{
-        life.minus(2)
-        belief.plus(1)
+    private fun applyEffectCaseSeven(){
+        dexterity = dexterity.minus(2)
+    }
+
+    private fun applyEffectCaseEight(){
+        life = life.minus(2)
+        belief = belief.plus(1)
         if(belief > maxBelief) belief = maxBelief
-        return life <= 0
+    }
+
+    private fun applyEffectCaseNine(){
+        iceProt = true
     }
 }
