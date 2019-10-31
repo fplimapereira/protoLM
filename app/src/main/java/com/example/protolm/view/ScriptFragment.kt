@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.protolm.R
@@ -13,11 +14,12 @@ import com.example.protolm.factory.ScriptViewModelFactory
 import com.example.protolm.factory.SwitcherFactory
 import com.example.protolm.viewmodel.ScriptViewModel
 import com.example.protolm.databinding.FragmentScriptBinding
-
+import com.example.protolm.databinding.BattleDrawerBinding
 
 class ScriptFragment: Fragment() {
 
     lateinit var binding: FragmentScriptBinding
+    lateinit var drawerBinding: BattleDrawerBinding
 
 
     override fun onCreateView(
@@ -26,6 +28,8 @@ class ScriptFragment: Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_script, container, false)
+        drawerBinding = DataBindingUtil.inflate(inflater, R.layout.battle_drawer, container, false)
+        binding.scriptFragment.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
 
         val application = requireNotNull(this.activity).application
         val viewModelFactory = ScriptViewModelFactory(application)
@@ -35,8 +39,13 @@ class ScriptFragment: Fragment() {
         binding.viewModel = scriptViewModel
         scriptViewModel.enredo.observe(this, Observer {
             binding.tvSwitch.setText(it.evento)
-            binding.radioButton.text = it.acaoUm
-            binding.radioButton.isChecked = false
+
+            if(it.acaoUm != null){
+                binding.radioButton.visibility = View.VISIBLE
+                binding.radioButton.text = it.acaoUm
+                binding.radioButton.isChecked = false
+            }
+            else{binding.radioButton.visibility = View.GONE}
 
             if(it.acaoDois != null){
                 binding.radioButton2.visibility = View.VISIBLE
@@ -59,7 +68,10 @@ class ScriptFragment: Fragment() {
             }
             else{binding.radioButton4.visibility = View.GONE}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //it.efeitoId?.let { binding.viewModel. }
+
+            if (it.efeitoId != null) binding.viewModel?.setEfeito(it.efeitoId)
+            if (it.itemId != null) binding.viewModel?.setIten(it.itemId)
+            //if (it.testeId != null)
 
         })
 
