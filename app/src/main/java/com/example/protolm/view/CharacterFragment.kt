@@ -16,7 +16,7 @@ import com.example.protolm.R
 import com.example.protolm.viewmodel.CharacterViewModel
 import com.example.protolm.factory.CharacterViewModelFactory
 import com.example.protolm.repository.CharacterRepository
-import com.example.protolm.view.CharacterFragmentDirections.*
+import com.example.protolm.view.CharacterFragmentDirections.Companion.actionCharacterFragmentToIntroFragment
 import com.google.android.material.snackbar.Snackbar
 
 

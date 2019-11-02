@@ -10,7 +10,7 @@ import com.example.protolm.R
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.protolm.databinding.TitleFragmentBinding
-import com.example.protolm.view.TitleFragmentDirections.*
+import com.example.protolm.view.TitleFragmentDirections.Companion.actionTitleFragmentToCharacterFragment
 
 
 class TitleFragment : Fragment() {

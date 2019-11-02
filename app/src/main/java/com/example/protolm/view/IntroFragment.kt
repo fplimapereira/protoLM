@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.protolm.R
 import com.example.protolm.databinding.IntroFragmentBinding
-import com.example.protolm.view.IntroFragmentDirections.actionIntroFragmentToScriptFragment
+import com.example.protolm.view.IntroFragmentDirections.Companion.actionIntroFragmentToScriptFragment
 
 
 class IntroFragment : Fragment() {
