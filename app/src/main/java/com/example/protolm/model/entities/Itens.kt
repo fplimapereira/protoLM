@@ -19,10 +19,6 @@ data class Itens (
     @NonNull
     val itemId: Int,
 
-    @ColumnInfo(name = "efeito_id")
-    @NonNull
-    val efeitoId: Int,
-
     @ColumnInfo(name = "imagem_id")
     @NonNull
     val ImagemId: Int,
