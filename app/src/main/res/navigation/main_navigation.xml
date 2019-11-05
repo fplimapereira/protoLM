@@ -19,5 +19,21 @@
     </fragment>
 
     <fragment android:id="@+id/scriptFragment" android:label="ScriptFragment"
-              android:name="com.example.protolm.view.ScriptFragment"/>
+              android:name="com.example.protolm.view.ScriptFragment">
+
+        <action
+                android:id="@+id/action_scriptFragment_to_testDialog"
+                app:destination="@id/testDialog" />
+    </fragment>
+    <dialog
+            android:id="@+id/testDialog"
+            android:name="com.example.protolm.view.TestDialog"
+            android:label="TestDialog" >
+        <argument
+                android:name="testId"
+                app:argType="integer"
+                android:defaultValue="0" />
+    </dialog>
+
+
 </navigation>
