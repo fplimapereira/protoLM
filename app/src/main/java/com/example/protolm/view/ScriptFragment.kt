@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.protolm.R
 import com.example.protolm.factory.ScriptViewModelFactory
 import com.example.protolm.factory.SwitcherFactory
@@ -43,7 +44,7 @@ class ScriptFragment: Fragment() {
             if(it.acaoUm != null){
                 binding.radioButton.visibility = View.VISIBLE
                 binding.radioButton.text = it.acaoUm
-                binding.radioButton.isChecked = false
+
             }
             else{binding.radioButton.visibility = View.GONE}
 
@@ -71,7 +72,9 @@ class ScriptFragment: Fragment() {
 
             if (it.efeitoId != null) binding.viewModel?.setEfeito(it.efeitoId)
             if (it.itemId != null) binding.viewModel?.setIten(it.itemId)
-            //if (it.testeId != null)
+            if (it.testeId != null){
+                this.findNavController().navigate(ScriptFragmentDirections.actionScriptFragmentToTestDialog(it.testeId))
+            }
 
         })
 
