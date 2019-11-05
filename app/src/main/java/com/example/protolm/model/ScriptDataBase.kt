@@ -11,7 +11,7 @@ import com.example.protolm.model.entities.Eventos
 import com.example.protolm.model.entities.Inimigos
 import com.example.protolm.model.entities.Itens
 
-@Database(entities = [Eventos::class, Inimigos::class, Itens::class], version = 1)
+@Database(entities = [Eventos::class, Inimigos::class, Itens::class], version = 2)
 abstract class ScriptDataBase : RoomDatabase(){
 
     abstract fun eventosDao(): EventosDao
