@@ -23,7 +23,7 @@ class CharacterRepository (context: Context) {
     val IP = "ice protection"
 
 
-    val prefs: SharedPreferences = context.getSharedPreferences(PREF_NAME, 0)
+    val prefs: SharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
 
     var dexterity: Int
