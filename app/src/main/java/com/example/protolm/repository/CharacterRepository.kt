@@ -56,7 +56,7 @@ class CharacterRepository (context: Context) {
 
     var critAttk: Boolean
         get() = prefs.getBoolean(CA, false)
-        set(value) = prefs.edit().putBoolean(BEL, value).apply()
+        set(value) = prefs.edit().putBoolean(CA, value).apply()
 
     var fastRegen: Boolean
         get() = prefs.getBoolean(FR, false)
